@@ -15,6 +15,12 @@ fetch("https://api-colombia.com/api/v1/TypicalDish")
         mensaje.textContent = "No se pudieron cargar los datos. Intenta de nuevo más tarde.";
     });
 
+const imagenesReemplazo = {
+    10: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHDBkFaPjXBnUOO_FCTaM3wrzrZ808MXqfjIof0Q67DA&s=10",
+    16: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcKlj3Zj1kVhV5JLAKA8rEJ0fTSbeJabWSRGBoDCzFnw&s=10",
+    43: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTW_LDEWpO5Wkh5kxIFG4ymC7u39O7622m2QfIeon7TXA&s=10"
+};
+
 function mostrarPlatos(platos) {
     mensaje.style.display = "none";
     conteo.textContent = "Total de platos: " + platos.length;
@@ -27,7 +33,7 @@ function mostrarPlatos(platos) {
         titulo.textContent = plato.name;
 
         const imagen = document.createElement("img");
-        imagen.src = plato.imageUrl;
+        imagen.src = imagenesReemplazo[plato.id] || plato.imageUrl;
         imagen.alt = plato.name;
 
         const departamento = document.createElement("p");
